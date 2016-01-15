@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Hive2hive by yusongying</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Hive2hive</h1>
+      <h2 class="project-tagline">Java library for secure, distributed, P2P-based file synchronization and sharing.</h2>
+      <a href="https://github.com/yusongying/Hive2Hive" class="btn">View on GitHub</a>
+      <a href="https://github.com/yusongying/Hive2Hive/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/yusongying/Hive2Hive/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="-hive2hive" class="anchor" href="#-hive2hive" aria-hidden="true"><span class="octicon octicon-link"></span></a><img src="http://hive2hive.com/wp-content/uploads/2014/04/Hive2Hive_Icon-e1398611873118.png" alt="Hive2Hive logo"> Hive2Hive</h1>
+
+<p><a href="https://travis-ci.org/Hive2Hive/Hive2Hive"><img src="https://travis-ci.org/Hive2Hive/Hive2Hive.svg?branch=master" alt="Build Status"></a></p>
+
+<p><a href="https://github.com/Hive2Hive/Hive2Hive/wiki">Hive2Hive</a> is an open-source library, written in Java, for secure, distributed, P2P-based file synchronization and sharing. It is built on top of <a href="https://github.com/tomp2p/TomP2P">TomP2P</a>, an advanced, high-performance DHT for multi-key-value pairs. The Hive2Hive project is licensed under the <a href="http://opensource.org/licenses/MIT">MIT License</a> and any contribution is welcome.</p>
+
+<p><strong>Problems of common sync and sharing services</strong></p>
+
+<p>Although many well-known synchronization and sharing services exist, most of them exhibit the following drawbacks:</p>
+
+<ul>
+<li>centralized client-server approaches, data resides in large, external data centers
+
+<ul>
+<li>single-point-of-failure, vulnerable to targeted attacks</li>
+<li>often not scalable</li>
+</ul>
+</li>
+<li>private data is not encrypted</li>
+<li>user control is revoked, no control over who has access to the private data</li>
+<li>user is bound to the respective pricing and terms of service</li>
+<li>no version control, no conflict management</li>
+</ul>
+
+<p><strong>Hive2Hive is the solution!</strong></p>
+
+<p>The Hive2Hive library addresses these issues by providing a <strong>free</strong> and <strong>open-sourced</strong>, <strong>distributed</strong> and <strong>scalable</strong> solution that focuses on maximum <strong>security</strong> and <strong>privacy</strong> of both users and data. Aside of this, it supports the whole feature set known from similar centralized approaches, such as <em>Dropbox</em>, <em>OneDrive</em> or <em>Google Drive</em>, and adds functionality for file <strong>versioning</strong> and <strong>conflict management</strong>. All packed in a <strong>clean, simple API</strong>.</p>
+
+<p>There are many simple ways to improve this experience even more. <a href="https://github.com/Hive2Hive/Hive2Hive/wiki/Contribution">Start to contribute now!</a></p>
+
+<p>Check our <a href="https://github.com/Hive2Hive/Hive2Hive/wiki">GitHub Wiki</a> to learn more about <a href="https://github.com/Hive2Hive/Hive2Hive/wiki/How-To-Use">How To Use</a> and <a href="https://github.com/Hive2Hive/Hive2Hive/wiki/How-It-Works">How It Works</a>.</p>
+
+<p><strong>Are you looking for a demo application?</strong></p>
+
+<ul>
+<li>
+<a href="http://www.peerwasp.com/">PeerWasp</a>, a Windows-based shell extension à la Dropbox.</li>
+<li>
+<a href="https://github.com/Hive2Hive/Hive2Hive/tree/master/org.hive2hive.client">H2H Console Client</a>, an executable <code>.jar</code> console application.</li>
+<li>
+<a href="https://github.com/Hive2Hive/RCP_Client">Eclipse RCP Client</a>, an RCP-based client.</li>
+</ul>
+
+<h3>
+<a id="table-of-contents" class="anchor" href="#table-of-contents" aria-hidden="true"><span class="octicon octicon-link"></span></a>Table of Contents</h3>
+
+<p><strong><a href="#api-demonstration">API Demonstration</a></strong><br>
+<strong><a href="#features--advantages">Features &amp; Advantages</a></strong><br>
+<strong><a href="#installation">Installation</a></strong><br>
+<strong><a href="#documentation">Documentation</a></strong><br>
+<strong><a href="#contribution">Contribution</a></strong><br>
+<strong><a href="#contact">Contact</a></strong></p>
+
+<h2>
+<a id="api-demonstration" class="anchor" href="#api-demonstration" aria-hidden="true"><span class="octicon octicon-link"></span></a>API Demonstration</h2>
+
+<p>The Hive2Hive library provides a simple API that is straightforward to use. (<a href="https://github.com/Hive2Hive/Hive2Hive/tree/master/org.hive2hive.core/src/main/java/org/hive2hive/core/api">View Source</a>)
+A short demonstration of the API and its basic usage are given here.</p>
+
+<h3>
+<a id="network-management" class="anchor" href="#network-management" aria-hidden="true"><span class="octicon octicon-link"></span></a>Network Management</h3>
+
+<h4>
+<a id="creating-a-p2p-network" class="anchor" href="#creating-a-p2p-network" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating a P2P Network</h4>
+
+<p>Configuring and setting up a new P2P network is very easy. Just specify the configurations and setup an initial node.</p>
+
+<ol>
+<li>The <code>NetworkConfiguration</code> and <code>FileConfiguration</code> factory classes may help to specify your configurations.</li>
+<li>Create an initial peer node and connect it.</li>
+</ol>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">INetworkConfiguration</span> netConfig <span class="pl-k">=</span> <span class="pl-smi">NetworkConfiguration</span><span class="pl-k">.</span>create(<span class="pl-s"><span class="pl-pds">"</span>first<span class="pl-pds">"</span></span>);
+<span class="pl-smi">IFileConfiguration</span> fileConfig <span class="pl-k">=</span> <span class="pl-smi">FileConfiguration</span><span class="pl-k">.</span>createDefault();
+
+<span class="pl-smi">IH2HNode</span> peerNode <span class="pl-k">=</span> <span class="pl-smi">H2HNode</span><span class="pl-k">.</span>createNode(netConfig, fileConfig);
+peerNode<span class="pl-k">.</span>connect();</pre></div>
+
+<h4>
+<a id="joining-an-existing-p2p-network" class="anchor" href="#joining-an-existing-p2p-network" aria-hidden="true"><span class="octicon octicon-link"></span></a>Joining an Existing P2P Network</h4>
+
+<p>You may want to add other peer nodes to the created network. Any node can join by bootstrapping to another node that is already part of the network.</p>
+
+<ol>
+<li>Specify the network configuration for the joining node (i.e., provide the bootstrap address of another node).</li>
+<li>Create the new node and connect it. It will bootstrap according to its network configuration.</li>
+</ol>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">INetworkConfiguration</span> netConfig2 <span class="pl-k">=</span> <span class="pl-smi">NetworkConfiguration</span><span class="pl-k">.</span>create(<span class="pl-s"><span class="pl-pds">"</span>second<span class="pl-pds">"</span></span>, <span class="pl-smi">InetAddress</span><span class="pl-k">.</span>getByName(<span class="pl-s"><span class="pl-pds">"</span>192.168.1.100<span class="pl-pds">"</span></span>));
+<span class="pl-smi">IH2HNode</span> peerNode2 <span class="pl-k">=</span> <span class="pl-smi">H2HNode</span><span class="pl-k">.</span>createNode(netConfig2, fileConfig);
+peerNode2<span class="pl-k">.</span>connect();</pre></div>
+
+<h3>
+<a id="user-management" class="anchor" href="#user-management" aria-hidden="true"><span class="octicon octicon-link"></span></a>User Management</h3>
+
+<p>Once a peer node is connected to a network, users can interact with it. For this, each node provides a user management interface.</p>
+
+<ol>
+<li>The user has to provide her credentials.</li>
+<li>Login the user to the network. If it's the <em>first</em> login, she has to register herself, one-time.</li>
+<li>Then, the user can interact with the network (i.e., file management is enabled).</li>
+</ol>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">IUserManager</span> userManager <span class="pl-k">=</span> peerNode<span class="pl-k">.</span>getUserManager();
+
+<span class="pl-smi">UserCredentials</span> credentials <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">UserCredentials</span>(<span class="pl-s"><span class="pl-pds">"</span>userId<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>password<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>pin<span class="pl-pds">"</span></span>);
+<span class="pl-smi">Path</span> rootDirectory <span class="pl-k">=</span> <span class="pl-smi">Paths</span><span class="pl-k">.</span>get(<span class="pl-s"><span class="pl-pds">"</span>sample/path/to/rootDirectory<span class="pl-pds">"</span></span>);
+
+<span class="pl-k">if</span> (<span class="pl-k">!</span>userManager<span class="pl-k">.</span>isRegistered(credentials<span class="pl-k">.</span>getUserId())) {
+    userManager<span class="pl-k">.</span>register(credentials)<span class="pl-k">.</span>await();
+}
+userManager<span class="pl-k">.</span>login(credentials, rootDirectory)<span class="pl-k">.</span>await();</pre></div>
+
+<h3>
+<a id="file-management" class="anchor" href="#file-management" aria-hidden="true"><span class="octicon octicon-link"></span></a>File Management</h3>
+
+<p>As soon as a user is logged in to the network, her files are automatically synchronized with the current node. Many further file operations are available. For this, each node provides a file management interface.</p>
+
+<ul>
+<li>
+<strong>add</strong> / <strong>delete</strong> file</li>
+<li>
+<strong>update</strong> / <strong>recover</strong> file</li>
+<li>
+<strong>share</strong> file with another user</li>
+<li>
+<strong>move</strong> file</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">IFileManager</span> fileManager <span class="pl-k">=</span> peerNode<span class="pl-k">.</span>getFileManager();
+
+<span class="pl-smi">File</span> folder <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">File</span>(<span class="pl-s"><span class="pl-pds">"</span>folderpath<span class="pl-pds">"</span></span>);
+<span class="pl-smi">File</span> file <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">File</span>(folder, <span class="pl-s"><span class="pl-pds">"</span>filepath<span class="pl-pds">"</span></span>);
+
+fileManager<span class="pl-k">.</span>add(file);
+
+fileManager<span class="pl-k">.</span>update(file);
+
+fileManager<span class="pl-k">.</span>share(folder, <span class="pl-s"><span class="pl-pds">"</span>other-userId<span class="pl-pds">"</span></span>, <span class="pl-smi">PermissionType</span><span class="pl-c1"><span class="pl-k">.</span>WRITE</span>);
+
+<span class="pl-smi">IVersionSelector</span> versionSelector <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">IVersionSelector</span>() {
+    <span class="pl-k">@Override</span>
+    <span class="pl-k">public</span> <span class="pl-smi">IFileVersion</span> <span class="pl-en">selectVersion</span>(<span class="pl-k">List&lt;<span class="pl-smi">IFileVersion</span>&gt;</span> <span class="pl-v">availableVersions</span>) {
+        <span class="pl-k">return</span> availableVersions<span class="pl-k">.</span>get(<span class="pl-c1">0</span>);
+    }
+};
+fileManager<span class="pl-k">.</span>recover(file, versionSelector);
+
+fileManager<span class="pl-k">.</span>move(folder, <span class="pl-k">new</span> <span class="pl-smi">File</span>(<span class="pl-s"><span class="pl-pds">"</span>other-folder<span class="pl-pds">"</span></span>));
+
+fileManager<span class="pl-k">.</span>delete(file);</pre></div>
+
+<h4>
+<a id="file-watchdog" class="anchor" href="#file-watchdog" aria-hidden="true"><span class="octicon octicon-link"></span></a>File Watchdog</h4>
+
+<p>In order to keep track of changes in the local file system, a file observer is needed. This observer notifies its attached listeners about all file system events. Either use the provided <code>H2HFileObserver</code> and <code>H2HFileObserverListener</code> or implement your own observer adhering to the <code>IFileObserver</code> and <code>IFileObserverListener</code> interfaces.<br>
+The <code>H2HFileObserverListener</code> automatically synchronizes the Hive2Hive root folder with the network.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">IFileObserverListener</span> listener <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">H2HFileObserverListener</span>(fileManager);
+
+<span class="pl-smi">IFileObserver</span> observer <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">H2HFileObserver</span>(rootDirectory<span class="pl-k">.</span>toFile());
+observer<span class="pl-k">.</span>addFileObserverListener(listener);
+observer<span class="pl-k">.</span>start();</pre></div>
+
+<h2>
+<a id="features--advantages" class="anchor" href="#features--advantages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features &amp; Advantages</h2>
+
+<p>Hive2Hive offers the same basic functionality known from popular synchronization services (e.g., <a href="http://www.dropbox.com">Dropbox</a>).<br>
+On top of that, Hive2Hive provides additional features such as security and versioning.</p>
+
+<ul>
+<li>File Synchronization</li>
+<li>File Sharing and Access Permissions <em>(read/write and read-only)</em>
+</li>
+<li>File Versioning and Conflict Management</li>
+<li>File Watchdog / Change Detection <em>(automated, configurable)</em>
+</li>
+<li>
+<a href="https://github.com/Hive2Hive/Hive2Hive/wiki/Security-Concepts">Security</a> <em>(configurable)</em>
+
+<ul>
+<li>
+<a href="https://github.com/Hive2Hive/Hive2Hive/wiki/Security-Concepts#encryption">Encryption</a> of files and messages</li>
+<li>
+<a href="https://github.com/Hive2Hive/Hive2Hive/wiki/Security-Concepts#authentication">Authentication</a> of data and messages</li>
+</ul>
+</li>
+<li>Users can use multiple clients <em>(simulatenously)</em>
+</li>
+<li>Multiple users can use the same machine <em>(simultaneously)</em>
+</li>
+</ul>
+
+<p><strong>Using the Hive2Hive library is very simple and has several advantages:</strong></p>
+
+<ul>
+<li>P2P Decentralization
+
+<ul>
+<li>Scalability</li>
+<li>Heterogeneity</li>
+<li>Reliability &amp; Fault-Tolerance</li>
+</ul>
+</li>
+<li>no file size limits (configurable)</li>
+<li>platform independent (JVM)</li>
+<li>headless deployment possible<sup>*</sup> (e.g., on a <a href="http://www.raspberrypi.org/">Raspberry Pi</a>)<br>
+</li>
+<li>free &amp; open-source</li>
+<li>generously configurable &amp; customizable</li>
+<li>highly extendable</li>
+<li>detailed documentation</li>
+</ul>
+
+<p><sup>*</sup> Try our console-based <a href="https://github.com/Hive2Hive/Hive2Hive/tree/master/org.hive2hive.client"><code>org.hive2hive.client</code></a> by just executing the library <code>.jar</code>.</p>
+
+<p><strong>And there is even more to come:</strong></p>
+
+<ul>
+<li>A demonstrative GUI client is waiting in the wings (<a href="https://github.com/Hive2Hive/RCP_Client">see more</a>)</li>
+<li>REST API (<a href="https://github.com/Hive2Hive/Hive2Hive/issues/68">see more</a>)</li>
+<li>Secure Bootstrapping (<a href="https://github.com/Hive2Hive/Hive2Hive/issues/61">see more</a>)</li>
+<li>LAN Synchronization (<a href="https://github.com/Hive2Hive/Hive2Hive/issues/77">see more</a>)</li>
+<li>Large File Alternatives (<a href="https://github.com/Hive2Hive/Hive2Hive/issues/73">see more</a>)</li>
+<li>Same Network - Different Applications (<a href="https://github.com/Hive2Hive/Hive2Hive/issues/80">see more</a>)</li>
+<li>and <a href="https://github.com/Hive2Hive/Hive2Hive/issues?labels=future+work&amp;page=1&amp;state=open">more</a>
+</li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>There are three easy ways to get and include the Hive2Hive library into your project. (<a href="http://hive2hive.com/download/">more</a>)</p>
+
+<p>If you just want to use the library, either refer to option 1 or 2.<br>
+If you want to <a href="#contribution">contribute to the project</a>, please refer to option 3.</p>
+
+<ul>
+<li>
+<strong>Option 1: Add Maven dependency</strong> <em>(recommended)</em><br>
+You can add the latest stable release as an <a href="http://maven.apache.org/">Apache Maven</a> dependency and fetch it from our repository. Add the following to your <code>pom.xml</code> and make sure to select the most recent version.<br>
+</li>
+</ul>
+
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">repository</span>&gt;
+  &lt;<span class="pl-ent">id</span>&gt;hive2hive.org&lt;/<span class="pl-ent">id</span>&gt;
+  &lt;<span class="pl-ent">url</span>&gt;http://repo.hive2hive.org&lt;/<span class="pl-ent">url</span>&gt;
+&lt;/<span class="pl-ent">repository</span>&gt;
+...
+&lt;<span class="pl-ent">dependency</span>&gt;
+  &lt;<span class="pl-ent">groupId</span>&gt;org.hive2hive&lt;/<span class="pl-ent">groupId</span>&gt;
+  &lt;<span class="pl-ent">artifactId</span>&gt;org.hive2hive.core&lt;/<span class="pl-ent">artifactId</span>&gt;
+  &lt;<span class="pl-ent">version</span>&gt;1.X.X&lt;/<span class="pl-ent">version</span>&gt;
+&lt;/<span class="pl-ent">dependency</span>&gt;</pre></div>
+
+<ul>
+<li>
+<strong>Option 2: Add JAR-file directly</strong><br>
+In case you don't want to use Maven, you can just download the <a href="https://github.com/Hive2Hive/Hive2Hive/releases">latest stable release</a> that comes directly with all necessary sources. All required <code>.jar</code>-files are packed and delivered to you as a <code>.zip</code>.</li>
+<li>
+<strong>Option 3: Clone from GitHub</strong><br>
+If you want to contribute to the Hive2Hive library project, this is what you should do. Cloning from GitHub gets the <em>bleeding edge</em> of development and thus some sources might not be stable. So this option is not recommended if you just want to use the library.</li>
+</ul>
+
+<h2>
+<a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Documentation</h2>
+
+<ul>
+<li>For more details and documentation of the Hive2Hive project, please visit the <a href="https://github.com/Hive2Hive/Hive2Hive/wiki">GitHub Wiki</a>.</li>
+<li>You can also take a look at our project website at <a href="http://www.hive2hive.com">www.hive2hive.com</a>.</li>
+<li>The source code itself is thoroughly documented using JavaDoc.</li>
+</ul>
+
+<h2>
+<a id="contribution" class="anchor" href="#contribution" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contribution</h2>
+
+<p>The library is intended to be improved and extended so that we all profit from its capabilities. Unlike many other “<em>secure</em>” services, Hive2Hive discloses its implementation and is open for any sort of contribution and constructive criticism.</p>
+
+<p><strong>We believe that everyone can contribute to make Hive2Hive even better!</strong> </p>
+
+<p>There are several things - from simple to complex - you can do to help:</p>
+
+<ul>
+<li>
+<a href="https://github.com/Hive2Hive/Hive2Hive/stargazers">Star</a> and <a href="https://github.com/Hive2Hive/Hive2Hive/watchers">watch</a> the project here on GitHub</li>
+<li>Spread the word and help us getting attention (e.g., follow/tweet about <a href="https://twitter.com/Hive2Hive">@Hive2Hive</a>)</li>
+<li>Suggest and post <strong>your ideas</strong> about improvements or extensions on the <a href="https://github.com/Hive2Hive/Hive2Hive/issues?state=open">issues</a> page</li>
+<li>Participate in <a href="https://github.com/Hive2Hive/Hive2Hive/issues?labels=&amp;page=1&amp;state=open">discussions</a>, share your expertise</li>
+<li>Help us with the documentation: JavaDoc, <a href="https://github.com/Hive2Hive/Hive2Hive/wiki">GitHub Wiki</a>, etc.</li>
+<li>Help us with the implementation of (your) features</li>
+<li>
+<strong>Fork the project</strong> and send your pull requests</li>
+<li>Help the community by answering questions on StackOverflow (tagged with <a href="http://stackoverflow.com/questions/tagged/hive2hive"><code>hive2hive</code></a>)</li>
+</ul>
+
+<p><strong>Also, if you are a professional cryptographer with interest in this project, any feedback on the project is very welcome!</strong></p>
+
+<h2>
+<a id="contact" class="anchor" href="#contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contact</h2>
+
+<p>If you have any questions, feel uncomfortable or uncertain about an issue or your changes, feel free to reach us via email at <a href="mailto:info@hive2hive.com">info@hive2hive.com</a>. Please consider posting your question on StackOverflow (using the <a href="http://stackoverflow.com/questions/tagged/hive2hive"><code>hive2hive</code></a> tag) in case it is a technical question that might interest other developers, too.</p>
+
+<p>We provide you with all information you need and will happily help you via email, Skype, remote pairing or whatever you are comfortable with.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/yusongying/Hive2Hive">Hive2hive</a> is maintained by <a href="https://github.com/yusongying">yusongying</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
